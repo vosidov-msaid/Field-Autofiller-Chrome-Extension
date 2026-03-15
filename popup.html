@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Autofiller</title>
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --panel: #ffffff;
+        --text: #17212f;
+        --subtle: #546176;
+        --accent: #1665d8;
+        --accent-hover: #0f54b7;
+        --border: #d7deea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: linear-gradient(145deg, #f4f7fc 0%, #ebf1fb 100%);
+        color: var(--text);
+        min-width: 330px;
+      }
+
+      .container {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin: 10px;
+        padding: 14px;
+        box-shadow: 0 8px 24px rgba(20, 35, 66, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: var(--subtle);
+        font-size: 12px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      label {
+        display: grid;
+        gap: 4px;
+        font-size: 12px;
+        color: var(--subtle);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 13px;
+        color: var(--text);
+        background: #fff;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 52px;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      button {
+        border: none;
+        border-radius: 8px;
+        padding: 9px 10px;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      button.primary:hover {
+        background: var(--accent-hover);
+      }
+
+      button.secondary {
+        background: #e9effa;
+        color: #1f3f74;
+      }
+
+      #status {
+        margin-top: 10px;
+        min-height: 16px;
+        font-size: 12px;
+        color: #1f6f2f;
+      }
+
+      #status.error {
+        color: #9e2630;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Field Autofiller</h1>
+      <p>Save your details once, then autofill the current page.</p>
+
+      <div class="grid">
+        <label>
+          Full name
+          <input id="name" type="text" autocomplete="name" />
+        </label>
+        <label>
+          Email
+          <input id="email" type="email" autocomplete="email" />
+        </label>
+        <label>
+          Phone
+          <input id="phone" type="tel" autocomplete="tel" />
+        </label>
+        <label>
+          Company
+          <input id="company" type="text" autocomplete="organization" />
+        </label>
+        <label>
+          Address
+          <textarea id="address" autocomplete="street-address"></textarea>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="secondary" type="button">Save Profile</button>
+        <button id="fillBtn" class="primary" type="button">Autofill Page</button>
+      </div>
+
+      <div id="status" aria-live="polite"></div>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
