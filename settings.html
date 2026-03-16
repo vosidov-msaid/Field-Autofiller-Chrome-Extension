@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Autofiller - Settings</title>
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --panel: #ffffff;
+        --text: #17212f;
+        --subtle: #546176;
+        --accent: #1665d8;
+        --accent-hover: #0f54b7;
+        --border: #d7deea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: linear-gradient(145deg, #f4f7fc 0%, #ebf1fb 100%);
+        color: var(--text);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(20, 35, 66, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 24px;
+      }
+
+      p {
+        margin: 0 0 20px;
+        color: var(--subtle);
+        font-size: 14px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--subtle);
+        font-weight: 500;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 14px;
+        color: var(--text);
+        background: #fff;
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(22, 101, 216, 0.1);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 60px;
+      }
+
+      .field-card {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px;
+        background: #fbfdff;
+      }
+
+      .field-card h3 {
+        margin: 0 0 12px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #20324c;
+      }
+
+      .field-card .row {
+        display: grid;
+        gap: 10px;
+      }
+
+      .custom-section {
+        margin-top: 24px;
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .custom-section h2 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .custom-section p {
+        margin: 0 0 12px;
+        font-size: 13px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      #addCustomFieldBtn {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .custom-fields {
+        display: grid;
+        gap: 12px;
+      }
+
+      .custom-field {
+        border: 1px dashed #c5d2e9;
+        border-radius: 10px;
+        padding: 14px;
+        background: #f9fbff;
+      }
+
+      .custom-field .row {
+        display: grid;
+        gap: 10px;
+      }
+
+      .custom-field-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .custom-field-title {
+        font-size: 13px;
+        color: #20324c;
+        font-weight: 600;
+      }
+
+      button.ghost {
+        background: #eef3fc;
+        color: #27487e;
+      }
+
+      button.ghost:hover {
+        background: #dce6f8;
+      }
+
+      button.danger {
+        background: #fdecee;
+        color: #a22834;
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      button.danger:hover {
+        background: #fad5dc;
+      }
+
+      .empty-custom-fields {
+        border: 1px dashed #cfd9ea;
+        border-radius: 8px;
+        padding: 14px;
+        font-size: 12px;
+        color: #607087;
+        text-align: center;
+      }
+
+      button {
+        border: none;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      button.primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      button.primary:hover {
+        background: var(--accent-hover);
+      }
+
+      button.secondary {
+        background: #e9effa;
+        color: #1f3f74;
+      }
+
+      button.secondary:hover {
+        background: #d4e1f7;
+      }
+
+      #status {
+        margin-top: 16px;
+        min-height: 18px;
+        font-size: 13px;
+        color: #1f6f2f;
+        padding: 8px 12px;
+        border-radius: 6px;
+        background: #f0f9f3;
+      }
+
+      #status.error {
+        color: #9e2630;
+        background: #fef1f3;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Edit Profile</h1>
+      <p>Save your details once, then autofill pages with your information.</p>
+
+      <div class="grid">
+        <section class="field-card">
+          <h3>Full Name</h3>
+          <div class="row">
+            <label>
+              Value
+              <input id="name" type="text" autocomplete="name" />
+            </label>
+            <label>
+              Hints (comma-separated)
+              <input id="hints-name" type="text" placeholder="full_name, fn" />
+            </label>
+          </div>
+        </section>
+
+        <section class="field-card">
+          <h3>Email</h3>
+          <div class="row">
+            <label>
+              Value
+              <input id="email" type="email" autocomplete="email" />
+            </label>
+            <label>
+              Hints (comma-separated)
+              <input id="hints-email" type="text" placeholder="email_address, user_email" />
+            </label>
+          </div>
+        </section>
+
+        <section class="field-card">
+          <h3>Phone</h3>
+          <div class="row">
+            <label>
+              Value
+              <input id="phone" type="tel" autocomplete="tel" />
+            </label>
+            <label>
+              Hints (comma-separated)
+              <input id="hints-phone" type="text" placeholder="phone_number, mobile_no" />
+            </label>
+          </div>
+        </section>
+
+        <section class="field-card">
+          <h3>Company</h3>
+          <div class="row">
+            <label>
+              Value
+              <input id="company" type="text" autocomplete="organization" />
+            </label>
+            <label>
+              Hints (comma-separated)
+              <input id="hints-company" type="text" placeholder="company_name, org_name" />
+            </label>
+          </div>
+        </section>
+
+        <section class="field-card">
+          <h3>Address</h3>
+          <div class="row">
+            <label>
+              Value
+              <textarea id="address" autocomplete="street-address"></textarea>
+            </label>
+            <label>
+              Hints (comma-separated)
+              <input id="hints-address" type="text" placeholder="street_addr, shipping_address" />
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <section class="custom-section">
+        <div class="section-head">
+          <h2>Custom Fields</h2>
+          <button id="addCustomFieldBtn" class="ghost" type="button">+ Add Field</button>
+        </div>
+        <p>Create extra fields with value and hints (examples: LinkedIn, Job Title).</p>
+        <div id="customFieldsContainer" class="custom-fields"></div>
+      </section>
+
+      <div class="actions">
+        <button id="saveBtn" class="secondary" type="button">Save Profile</button>
+        <button id="closeBtn" class="primary" type="button">Close</button>
+      </div>
+
+      <div id="status" aria-live="polite"></div>
+    </main>
+
+    <script src="settings.js"></script>
+  </body>
+</html>

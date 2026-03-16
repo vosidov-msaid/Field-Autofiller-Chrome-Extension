@@ -24,7 +24,7 @@
         font-family: "Segoe UI", Tahoma, sans-serif;
         background: linear-gradient(145deg, #f4f7fc 0%, #ebf1fb 100%);
         color: var(--text);
-        min-width: 330px;
+        min-width: 280px;
       }
 
       .container {
@@ -39,148 +39,26 @@
       h1 {
         margin: 0 0 6px;
         font-size: 16px;
+        text-align: center;
       }
 
       p {
-        margin: 0 0 12px;
+        margin: 0 0 20px;
         color: var(--subtle);
         font-size: 12px;
+        text-align: center;
       }
 
-      .grid {
-        display: grid;
-        gap: 8px;
-      }
-
-      label {
-        display: grid;
-        gap: 4px;
-        font-size: 12px;
-        color: var(--subtle);
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 8px 10px;
-        font-size: 13px;
-        color: var(--text);
-        background: #fff;
-      }
-
-      textarea {
-        resize: vertical;
-        min-height: 52px;
-      }
-
-      .field-card {
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px;
-        background: #fbfdff;
-      }
-
-      .field-card h3 {
-        margin: 0 0 8px;
-        font-size: 12px;
-        color: #20324c;
-      }
-
-      .field-card .row {
-        display: grid;
-        gap: 6px;
-      }
-
-      .small-note {
-        margin: 8px 0 0;
-        font-size: 11px;
-      }
-
-      .actions {
+      .main-buttons {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin-top: 12px;
+        gap: 10px;
+        margin-bottom: 12px;
       }
 
-      .custom-section {
-        margin-top: 12px;
-        border-top: 1px solid var(--border);
-        padding-top: 10px;
-      }
-
-      .custom-section h2 {
-        margin: 0 0 6px;
-        font-size: 13px;
-      }
-
-      .custom-section p {
-        margin: 0 0 8px;
-        font-size: 11px;
-      }
-
-      .section-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-      }
-
-      #addCustomFieldBtn {
-        padding: 7px 9px;
-        font-size: 11px;
-      }
-
-      .custom-fields {
-        display: grid;
-        gap: 8px;
-      }
-
-      .custom-field {
-        border: 1px dashed #c5d2e9;
-        border-radius: 10px;
-        padding: 10px;
-        background: #f9fbff;
-      }
-
-      .custom-field .row {
-        display: grid;
-        gap: 6px;
-      }
-
-      .custom-field-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-
-      .custom-field-title {
-        font-size: 12px;
-        color: #20324c;
-        font-weight: 600;
-      }
-
-      button.ghost {
-        background: #eef3fc;
-        color: #27487e;
-      }
-
-      button.danger {
-        background: #fdecee;
-        color: #a22834;
-        padding: 6px 8px;
-        font-size: 11px;
-      }
-
-      .empty-custom-fields {
-        border: 1px dashed #cfd9ea;
-        border-radius: 8px;
-        padding: 10px;
-        font-size: 11px;
-        color: #607087;
+      .main-buttons button {
+        padding: 12px 16px;
+        font-size: 14px;
       }
 
       button {
@@ -206,14 +84,18 @@
         color: #1f3f74;
       }
 
-      #status {
-        margin-top: 10px;
+      button.secondary:hover {
+        background: #d4e1f7;
+      }
+
+      #mainStatus {
         min-height: 16px;
         font-size: 12px;
         color: #1f6f2f;
+        text-align: center;
       }
 
-      #status.error {
+      #mainStatus.error {
         color: #9e2630;
       }
     </style>
@@ -221,95 +103,12 @@
   <body>
     <main class="container">
       <h1>Field Autofiller</h1>
-      <p>Save your details once, then autofill the current page.</p>
-
-      <div class="grid">
-        <section class="field-card">
-          <h3>Full Name</h3>
-          <div class="row">
-            <label>
-              Value
-              <input id="name" type="text" autocomplete="name" />
-            </label>
-            <label>
-              Hints (comma-separated)
-              <input id="hints-name" type="text" placeholder="full_name, fn" />
-            </label>
-          </div>
-        </section>
-
-        <section class="field-card">
-          <h3>Email</h3>
-          <div class="row">
-            <label>
-              Value
-              <input id="email" type="email" autocomplete="email" />
-            </label>
-            <label>
-              Hints (comma-separated)
-              <input id="hints-email" type="text" placeholder="email_address, user_email" />
-            </label>
-          </div>
-        </section>
-
-        <section class="field-card">
-          <h3>Phone</h3>
-          <div class="row">
-            <label>
-              Value
-              <input id="phone" type="tel" autocomplete="tel" />
-            </label>
-            <label>
-              Hints (comma-separated)
-              <input id="hints-phone" type="text" placeholder="phone_number, mobile_no" />
-            </label>
-          </div>
-        </section>
-
-        <section class="field-card">
-          <h3>Company</h3>
-          <div class="row">
-            <label>
-              Value
-              <input id="company" type="text" autocomplete="organization" />
-            </label>
-            <label>
-              Hints (comma-separated)
-              <input id="hints-company" type="text" placeholder="company_name, org_name" />
-            </label>
-          </div>
-        </section>
-
-        <section class="field-card">
-          <h3>Address</h3>
-          <div class="row">
-            <label>
-              Value
-              <textarea id="address" autocomplete="street-address"></textarea>
-            </label>
-            <label>
-              Hints (comma-separated)
-              <input id="hints-address" type="text" placeholder="street_addr, shipping_address" />
-            </label>
-          </div>
-        </section>
+      <p>Quickly autofill pages with your saved details.</p>
+      <div class="main-buttons">
+        <button id="quickFillBtn" class="primary" type="button">Fill</button>
+        <button id="openSettingsBtn" class="secondary" type="button">Settings</button>
       </div>
-
-      <section class="custom-section">
-        <div class="section-head">
-          <h2>Custom Fields</h2>
-          <button id="addCustomFieldBtn" class="ghost" type="button">+ Add Field</button>
-        </div>
-        <p>Users can create extra fields with value and hints (examples: LinkedIn, Job Title).</p>
-        <div id="customFieldsContainer" class="custom-fields"></div>
-      </section>
-
-      <div class="actions">
-        <button id="saveBtn" class="secondary" type="button">Save Profile</button>
-        <button id="fillBtn" class="primary" type="button">Autofill Page</button>
-      </div>
-
-      <div id="status" aria-live="polite"></div>
+      <div id="mainStatus" aria-live="polite"></div>
     </main>
 
     <script src="popup.js"></script>

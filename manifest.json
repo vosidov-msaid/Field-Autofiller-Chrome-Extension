@@ -4,7 +4,8 @@
   "description": "Autofill common fields like name, email, phone, and address. Also supports custom field hints for more accurate autofilling.",
   "version": "1.0.0",
   "action": {
-    "default_title": "Field Autofiller"
+    "default_title": "Field Autofiller",
+    "default_popup": "popup.html"
   },
   "background": {
     "service_worker": "background.js"
